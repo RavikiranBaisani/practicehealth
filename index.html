@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Practice Health — Client Progress Tracking for Nutritionists</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&amp;family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: #FAF8F3; color: #1C1C1C; overflow-x: hidden; }
+    @keyframes float    { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-10px)} }
+    @keyframes floatSm  { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-7px)}  }
+    @keyframes fadeUp   { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes pulse    { 0%,100%{opacity:1} 50%{opacity:0.45} }
+    @media (max-width:660px) {
+      .nav-links  { display:none !important; }
+      .hero-visual { display:none !important; }
+    }
+  </style>
+</helmet>
+
+<!-- ─── NAV ─── -->
+<nav style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,38,26,0.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1160px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <a href="#" style="display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0;">
+      <svg width="26" height="26" viewBox="0 0 26 26">
+        <rect x="1" y="1" width="11" height="11" rx="2.5" fill="#A8E63D"></rect>
+        <rect x="14" y="14" width="11" height="11" rx="2.5" fill="#A8E63D" opacity="0.45"></rect>
+        <rect x="14" y="1" width="11" height="11" rx="2.5" fill="#A8E63D" opacity="0.18"></rect>
+      </svg>
+      <span style="font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;color:white;letter-spacing:-0.02em;white-space:nowrap;">Practice Health</span>
+    </a>
+    <div class="nav-links" style="display:flex;align-items:center;gap:28px;flex:1;justify-content:center;">
+      <a href="#features" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;" style-hover="color:white;">Features</a>
+      <a href="#how" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;" style-hover="color:white;">How it works</a>
+      <a href="#pricing" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;" style-hover="color:white;">Pricing</a>
+      <a href="#" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:14px;font-weight:500;" style-hover="color:white;">Log in</a>
+    </div>
+    <a href="#" style="background:#A8E63D;color:#0F3D2E;padding:9px 18px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;" style-hover="background:#BAF050;transform:translateY(-1px);">Start free trial</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero" style="background:radial-gradient(ellipse 90% 75% at 12% 55%, #1B5E46 0%, #0F3D2E 52%, #061910 100%);min-height:100vh;padding:104px 24px 80px;display:flex;align-items:center;">
+  <div style="max-width:1160px;margin:0 auto;width:100%;display:flex;gap:40px;align-items:center;flex-wrap:wrap;">
+
+    <!-- Copy -->
+    <div style="flex:1 1 360px;max-width:460px;min-width:260px;animation:fadeUp 0.75s ease both;">
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(168,230,61,0.12);border:1px solid rgba(168,230,61,0.28);border-radius:100px;padding:5px 14px;margin-bottom:28px;">
+        <div style="width:6px;height:6px;border-radius:50%;background:#A8E63D;animation:pulse 2.5s ease infinite;"></div>
+        <span style="color:#A8E63D;font-size:12.5px;font-weight:500;letter-spacing:0.02em;">For nutritionists &amp; dietitians</span>
+      </div>
+      <h1 style="font-family:'Outfit',sans-serif;font-size:clamp(40px,5.5vw,72px);font-weight:900;color:white;line-height:1.04;letter-spacing:-0.035em;margin-bottom:22px;">Every client's<br>progress,<br><span style="color:#A8E63D;">in one place.</span></h1>
+      <p style="color:rgba(255,255,255,0.62);font-size:clamp(15px,1.5vw,18px);line-height:1.72;margin-bottom:36px;max-width:420px;">Everything nutrition professionals need — meal and water logs, body composition, biomarkers, appointments, secure messaging, and WhatsApp notifications — in one platform built for the way you practise.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="#" style="background:#A8E63D;color:#0F3D2E;padding:14px 28px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap;" style-hover="background:#BAF050;transform:translateY(-1px);box-shadow:0 8px 24px rgba(168,230,61,0.3);">Start free trial →</a>
+        <a href="#" style="color:rgba(255,255,255,0.82);padding:14px 24px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;border:1.5px solid rgba(255,255,255,0.2);" style-hover="border-color:rgba(255,255,255,0.45);color:white;">See a demo</a>
+      </div>
+      
+    </div>
+
+    <!-- Dashboard + Mobile visual -->
+    <div class="hero-visual" style="flex:1;min-width:300px;max-width:660px;position:relative;height:420px;animation:fadeUp 0.75s 0.18s ease both;">
+
+      <!-- Dashboard window -->
+      <div style="position:absolute;left:0;top:0;width:490px;background:white;border-radius:14px;box-shadow:0 50px 120px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.07);overflow:hidden;animation:float 7s ease-in-out infinite;">
+        <!-- Browser bar -->
+        <div style="height:32px;background:#161616;display:flex;align-items:center;padding:0 12px;gap:5px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:#FF5F56;flex-shrink:0;"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#FFBD2E;flex-shrink:0;"></div>
+          <div style="width:10px;height:10px;border-radius:50%;background:#27C93F;flex-shrink:0;"></div>
+          <div style="flex:1;background:#252525;border-radius:4px;height:17px;margin:0 28px;display:flex;align-items:center;justify-content:center;gap:4px;">
+            <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" fill="none" stroke="#555" stroke-width="0.8"></circle><line x1="4" y1="0.5" x2="4" y2="7.5" stroke="#555" stroke-width="0.8"></line><line x1="0.5" y1="4" x2="7.5" y2="4" stroke="#555" stroke-width="0.8"></line></svg>
+            <span style="font-size:9px;color:#555;font-family:'DM Sans',sans-serif;">app.practicehealth.in</span>
+          </div>
+        </div>
+        <!-- App layout -->
+        <div style="display:flex;height:282px;">
+          <!-- Sidebar -->
+          <div style="width:156px;background:#0F3D2E;padding:12px 10px;display:flex;flex-direction:column;gap:1px;flex-shrink:0;overflow:hidden;">
+            <div style="display:flex;align-items:center;gap:5px;margin-bottom:14px;">
+              <svg width="13" height="13" viewBox="0 0 13 13"><rect x="0.5" y="0.5" width="5" height="5" rx="1.2" fill="#A8E63D"></rect><rect x="7.5" y="7.5" width="5" height="5" rx="1.2" fill="#A8E63D" opacity="0.5"></rect><rect x="7.5" y="0.5" width="5" height="5" rx="1.2" fill="#A8E63D" opacity="0.2"></rect></svg>
+              <span style="color:white;font-family:'Outfit',sans-serif;font-size:10px;font-weight:700;white-space:nowrap;">Practice Health</span>
+            </div>
+            <div style="background:rgba(168,230,61,0.16);border-radius:5px;padding:5px 8px;color:white;font-size:9.5px;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:5px;margin-bottom:1px;">
+              <svg width="9" height="9" viewBox="0 0 9 9"><circle cx="4.5" cy="3" r="2" fill="#A8E63D"></circle><path d="M0.5 9c0-2.2 1.8-4 4-4s4 1.8 4 4" fill="#A8E63D"></path></svg>Clients
+            </div>
+            <div style="padding:5px 8px;color:rgba(255,255,255,0.42);font-size:9.5px;font-family:'DM Sans',sans-serif;">Progress</div>
+            <div style="padding:5px 8px;color:rgba(255,255,255,0.42);font-size:9.5px;font-family:'DM Sans',sans-serif;">Food Logs</div>
+            <div style="padding:5px 8px;color:rgba(255,255,255,0.42);font-size:9.5px;font-family:'DM Sans',sans-serif;">Appointments</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:5px 8px;color:rgba(255,255,255,0.42);font-size:9.5px;font-family:'DM Sans',sans-serif;">Messages<div style="background:#A8E63D;color:#0F3D2E;border-radius:5px;padding:0 4px;font-size:6px;font-weight:700;line-height:13px;flex-shrink:0;">3</div></div>
+            <div style="padding:5px 8px;color:rgba(255,255,255,0.42);font-size:9.5px;font-family:'DM Sans',sans-serif;">Reports</div>
+            <div style="margin:10px 0 6px;padding:0 4px;color:rgba(255,255,255,0.28);font-size:7.5px;font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:0.08em;">Active</div>
+            <div style="display:flex;align-items:center;gap:5px;padding:5px 6px;border-radius:5px;background:rgba(255,255,255,0.1);">
+              <div style="width:17px;height:17px;border-radius:50%;background:oklch(0.62 0.14 32);flex-shrink:0;"></div>
+              <div><div style="color:white;font-size:8.5px;font-weight:500;white-space:nowrap;">Priya S.</div><div style="color:#A8E63D;font-size:7px;">● Now</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px;padding:5px 6px;border-radius:5px;">
+              <div style="width:17px;height:17px;border-radius:50%;background:oklch(0.62 0.12 185);flex-shrink:0;"></div>
+              <div><div style="color:rgba(255,255,255,0.65);font-size:8.5px;white-space:nowrap;">Rohan M.</div><div style="color:rgba(255,255,255,0.28);font-size:7px;">2h ago</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:5px;padding:5px 6px;border-radius:5px;">
+              <div style="width:17px;height:17px;border-radius:50%;background:oklch(0.62 0.13 280);flex-shrink:0;"></div>
+              <div><div style="color:rgba(255,255,255,0.65);font-size:8.5px;white-space:nowrap;">Ananya K.</div><div style="color:rgba(255,255,255,0.28);font-size:7px;">Yesterday</div></div>
+            </div>
+          </div>
+          <!-- Main panel -->
+          <div style="flex:1;background:#F7F8FA;padding:13px;overflow:hidden;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;">
+              <div style="display:flex;align-items:center;gap:7px;">
+                <div style="width:24px;height:24px;border-radius:50%;background:oklch(0.62 0.14 32);flex-shrink:0;"></div>
+                <div>
+                  <div style="font-family:'Outfit',sans-serif;font-size:11.5px;font-weight:700;color:#1C1C1C;line-height:1.2;">Priya Sharma</div>
+                  <div style="font-size:8.5px;color:#6B7280;">Weight Mgmt · Week 12</div>
+                </div>
+              </div>
+              <div style="background:#DCFCE7;color:#16A34A;font-size:7.5px;font-weight:600;padding:3px 8px;border-radius:20px;white-space:nowrap;">On track ✓</div>
+            </div>
+            <!-- Stat cards -->
+            <div style="display:flex;gap:5px;margin-bottom:9px;">
+              <div style="flex:1;background:white;border-radius:6px;padding:6px 7px;box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:6.5px;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;">Weight</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#1C1C1C;line-height:1;">73.8<span style="font-size:7.5px;color:#9CA3AF;font-weight:400;">kg</span></div>
+                <div style="color:#16A34A;font-size:6.5px;margin-top:2px;">↓ 4.2 kg total</div>
+              </div>
+              <div style="flex:1;background:white;border-radius:6px;padding:6px 7px;box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:6.5px;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;">Body Fat</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#1C1C1C;line-height:1;">24.1<span style="font-size:7.5px;color:#9CA3AF;font-weight:400;">%</span></div>
+                <div style="color:#16A34A;font-size:6.5px;margin-top:2px;">↓ 3.2%</div>
+              </div>
+              <div style="flex:1;background:white;border-radius:6px;padding:6px 7px;box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+                <div style="font-size:6.5px;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px;">HbA1c</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#1C1C1C;line-height:1;">5.6<span style="font-size:7.5px;color:#9CA3AF;font-weight:400;">%</span></div>
+                <div style="color:#16A34A;font-size:6.5px;margin-top:2px;">↓ 0.4%</div>
+              </div>
+            </div>
+            <!-- Chart -->
+            <div style="background:white;border-radius:6px;padding:8px;box-shadow:0 1px 2px rgba(0,0,0,0.05);">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                <div style="font-family:'Outfit',sans-serif;font-size:9px;font-weight:600;color:#1C1C1C;">Weight Trend · 12 Weeks</div>
+                <div style="font-size:7px;color:#9CA3AF;">kg</div>
+              </div>
+              <svg viewBox="0 0 240 65" style="width:100%;height:50px;display:block;overflow:visible;">
+                <defs>
+                  <linearGradient id="wg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#A8E63D" stop-opacity="0.22"></stop>
+                    <stop offset="100%" stop-color="#A8E63D" stop-opacity="0"></stop>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="15" x2="240" y2="15" stroke="#F0F0F0" stroke-width="1"></line>
+                <line x1="0" y1="32" x2="240" y2="32" stroke="#F0F0F0" stroke-width="1"></line>
+                <line x1="0" y1="49" x2="240" y2="49" stroke="#F0F0F0" stroke-width="1"></line>
+                <path d="M0,9 L34,21 L69,27 L103,36 L138,46 L172,52 L206,57 L240,61 L240,65 L0,65 Z" fill="url(#wg)"></path>
+                <polyline points="0,9 34,21 69,27 103,36 138,46 172,52 206,57 240,61" fill="none" stroke="#A8E63D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                <circle cx="240" cy="61" r="3.5" fill="#A8E63D" stroke="white" stroke-width="1.5"></circle>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile phone -->
+      <div style="position:absolute;right:0;top:28px;width:146px;z-index:2;animation:floatSm 5.5s 2s ease-in-out infinite;">
+        <div style="background:#111;border-radius:30px;padding:4px;box-shadow:0 32px 80px rgba(0,0,0,0.65),0 0 0 0.5px rgba(255,255,255,0.06);">
+          <div style="background:white;border-radius:26px;overflow:hidden;height:290px;display:flex;flex-direction:column;">
+            <div style="background:#0F3D2E;height:22px;display:flex;align-items:center;justify-content:space-between;padding:0 11px;flex-shrink:0;">
+              <span style="color:white;font-size:7.5px;font-weight:600;">9:41</span>
+              <div style="width:32px;height:8px;background:rgba(0,0,0,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;"><div style="width:4px;height:4px;background:rgba(0,0,0,0.6);border-radius:50%;"></div></div>
+              <div style="width:10px;height:4.5px;border:1px solid rgba(255,255,255,0.55);border-radius:1px;position:relative;"><div style="position:absolute;left:0.5px;top:0.5px;bottom:0.5px;right:2px;background:white;border-radius:0.5px;"></div></div>
+            </div>
+            <div style="background:#0F3D2E;padding:7px 11px 11px;flex-shrink:0;">
+              <div style="color:rgba(255,255,255,0.5);font-size:7.5px;line-height:1.3;">Good morning,</div>
+              <div style="color:white;font-size:12px;font-family:'Outfit',sans-serif;font-weight:700;line-height:1.2;">Priya</div>
+            </div>
+            <div style="flex:1;padding:7px;background:#F8F9FA;display:flex;flex-direction:column;gap:5px;overflow:hidden;">
+              <!-- Macros card -->
+              <div style="background:white;border-radius:8px;padding:7px;box-shadow:0 1px 2px rgba(0,0,0,0.06);flex-shrink:0;">
+                <div style="font-size:7.5px;font-weight:600;font-family:'Outfit',sans-serif;color:#1C1C1C;margin-bottom:5px;">Today's Macros</div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:6.5px;color:#6B7280;">Calories</span><span style="font-size:6.5px;color:#1C1C1C;font-weight:500;">1,480/1,800</span></div>
+                <div style="background:#F0EDE6;height:3px;border-radius:1.5px;overflow:hidden;margin-bottom:4px;"><div style="background:#A8E63D;width:82%;height:100%;border-radius:1.5px;"></div></div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:2px;"><span style="font-size:6.5px;color:#6B7280;">Protein</span><span style="font-size:6.5px;color:#1C1C1C;font-weight:500;">98g/120g</span></div>
+                <div style="background:#F0EDE6;height:3px;border-radius:1.5px;overflow:hidden;"><div style="background:#0F3D2E;width:82%;height:100%;border-radius:1.5px;"></div></div>
+              </div>
+              <!-- Log buttons -->
+              <div style="display:flex;gap:4px;flex-shrink:0;">
+                <div style="flex:1;background:#A8E63D;border-radius:8px;padding:7px 6px;display:flex;align-items:center;justify-content:center;gap:3px;">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><line x1="4" y1="1" x2="4" y2="7" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round"></line><line x1="1" y1="4" x2="7" y2="4" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round"></line></svg>
+                  <span style="font-size:8px;font-family:'Outfit',sans-serif;font-weight:700;color:#0F3D2E;white-space:nowrap;">Log meal</span>
+                </div>
+                <div style="background:rgba(15,61,46,0.1);border-radius:8px;padding:7px 7px;display:flex;align-items:center;justify-content:center;gap:3px;">
+                  <svg width="9" height="9" viewBox="0 0 9 9"><path d="M4.5 1C4.5 1 2 3.5 2 5.5a2.5 2.5 0 0 0 5 0C7 3.5 4.5 1 4.5 1z" stroke="#0F3D2E" stroke-width="1.3" fill="none"></path></svg>
+                  <span style="font-size:8px;font-family:'Outfit',sans-serif;font-weight:600;color:#0F3D2E;white-space:nowrap;">Water</span>
+                </div>
+              </div>
+              <!-- Meals -->
+              <div style="background:white;border-radius:8px;padding:6px 7px;box-shadow:0 1px 2px rgba(0,0,0,0.06);">
+                <div style="font-size:6.5px;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px;font-weight:500;">Today</div>
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:5px;padding-bottom:5px;border-bottom:1px solid #F5F5F5;">
+                  <div style="width:19px;height:19px;border-radius:4px;background:oklch(0.94 0.06 90);flex-shrink:0;"></div>
+                  <div><div style="font-size:7.5px;font-weight:500;color:#1C1C1C;white-space:nowrap;">Oats + Banana</div><div style="font-size:6.5px;color:#9CA3AF;">320 kcal</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:5px;">
+                  <div style="width:19px;height:19px;border-radius:4px;background:oklch(0.94 0.06 200);flex-shrink:0;"></div>
+                  <div><div style="font-size:7.5px;font-weight:500;color:#1C1C1C;white-space:nowrap;">Dal + Rice</div><div style="font-size:6.5px;color:#9CA3AF;">480 kcal</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROBLEM STRIP ─── -->
+<section style="background:#181818;padding:80px 24px;">
+  <div style="max-width:1000px;margin:0 auto;" data-reveal="">
+    <p style="color:rgba(255,255,255,0.35);font-size:11.5px;text-transform:uppercase;letter-spacing:0.13em;font-weight:500;text-align:center;margin-bottom:52px;">Sound familiar?</p>
+    <div style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;">
+
+      <div style="flex:1;min-width:220px;max-width:278px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(168,230,61,0.09);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4h14v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4z" stroke="#A8E63D" stroke-width="1.4"></path><line x1="5" y1="8" x2="13" y2="8" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"></line><line x1="5" y1="11" x2="10" y2="11" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;line-height:1.3;">Progress buried in chat</h3>
+        <p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.7;">Diet photos, measurements, and check-ins lost in WhatsApp threads you can't search or analyse.</p>
+      </div>
+
+      <div style="flex:1;min-width:220px;max-width:278px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(168,230,61,0.09);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="1.5" stroke="#A8E63D" stroke-width="1.4"></rect><line x1="2" y1="7" x2="16" y2="7" stroke="#A8E63D" stroke-width="1.4"></line><line x1="7" y1="3" x2="7" y2="5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"></line><line x1="11" y1="3" x2="11" y2="5" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;line-height:1.3;">Data without direction</h3>
+        <p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.7;">Client measurements scattered across notes apps and spreadsheets — no trend line, no pattern in sight.</p>
+      </div>
+
+      <div style="flex:1;min-width:220px;max-width:278px;">
+        <div style="width:40px;height:40px;border-radius:10px;background:rgba(168,230,61,0.09);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="3.5" stroke="#A8E63D" stroke-width="1.4"></circle><path d="M2 16c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"></path></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;line-height:1.3;">No single client view</h3>
+        <p style="color:rgba(255,255,255,0.45);font-size:14px;line-height:1.7;">Switching between 30 chats to remember where each client stands — every single consultation day.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ─── -->
+<section id="features" style="background:#FAF8F3;padding:100px 24px;">
+  <div style="max-width:1100px;margin:0 auto;" data-reveal="">
+    <div style="text-align:center;margin-bottom:60px;">
+      <p style="color:#0F3D2E;font-size:11.5px;text-transform:uppercase;letter-spacing:0.13em;font-weight:600;margin-bottom:12px;">Everything you need</p>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:800;color:#1C1C1C;letter-spacing:-0.03em;line-height:1.1;">Built for the way you practise</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+
+      <!-- FEATURED CARD — full width -->
+      <div style="grid-column:1/-1;background:white;border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);overflow:hidden;display:flex;flex-wrap:wrap;">
+        <!-- Copy side -->
+        <div style="flex:1;min-width:260px;padding:36px 36px 36px 36px;display:flex;flex-direction:column;justify-content:center;">
+          <div style="display:inline-flex;align-items:center;gap:6px;background:oklch(0.94 0.06 140);border-radius:100px;padding:4px 12px;margin-bottom:20px;align-self:flex-start;">
+            <div style="width:6px;height:6px;border-radius:50%;background:#0F3D2E;"></div>
+            <span style="font-size:11px;font-weight:600;color:#0F3D2E;letter-spacing:0.04em;text-transform:uppercase;">AI-powered</span>
+          </div>
+          <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="11" r="7" stroke="#0F3D2E" stroke-width="1.6"></circle><line x1="10" y1="2" x2="10" y2="6" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"></line><line x1="7" y1="2" x2="7" y2="5" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"></line></svg>
+          </div>
+          <h3 style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:#1C1C1C;margin-bottom:10px;">Food &amp; Water Logging with Photo Macro Analysis</h3>
+          <p style="color:#6B7280;font-size:15px;line-height:1.75;max-width:380px;">Clients snap a photo of their meal and the app automatically extracts macros and calories — no manual entry needed. Water intake, workout logs, and meal timing all flow straight to your dashboard.</p>
+        </div>
+        <!-- Visual side -->
+        <div style="flex:1;min-width:280px;background:oklch(0.97 0.03 140);padding:32px;display:flex;align-items:center;justify-content:center;">
+          <div style="width:100%;max-width:360px;background:white;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
+            <!-- Food photo placeholder -->
+            <div style="position:relative;height:160px;overflow:hidden;">
+              <svg width="100%" height="160" style="display:block;">
+                <defs>
+                  <pattern id="fp" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+                    <rect width="20" height="20" fill="#E8F5D0"></rect>
+                    <rect width="10" height="20" fill="#D4EDBB"></rect>
+                  </pattern>
+                </defs>
+                <rect width="100%" height="160" fill="url(#fp)"></rect>
+                <!-- Camera icon -->
+                <rect x="50%" y="50%" width="44" height="36" rx="6" fill="rgba(15,61,46,0.12)" transform="translate(-22,-22)"></rect>
+                <circle cx="50%" cy="50%" r="11" fill="rgba(15,61,46,0.18)" transform="translate(0,2)"></circle>
+                <text x="50%" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(15,61,46,0.38)">meal photo · tap to analyse</text>
+              </svg>
+              <!-- Scanning overlay -->
+              <div style="position:absolute;top:10px;right:10px;background:rgba(15,61,46,0.85);border-radius:8px;padding:5px 10px;display:flex;align-items:center;gap:5px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:#A8E63D;animation:pulse 1.8s ease infinite;"></div>
+                <span style="color:white;font-size:10px;font-weight:600;font-family:'Outfit',sans-serif;">Analysing macros…</span>
+              </div>
+            </div>
+            <!-- Macro results -->
+            <div style="padding:16px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:#1C1C1C;">Dal Tadka + Rice</div>
+                <div style="background:#DCFCE7;color:#16A34A;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;">Auto-detected ✓</div>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
+                <div style="text-align:center;background:#F9FAFB;border-radius:8px;padding:8px 4px;">
+                  <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;color:#1C1C1C;">486</div>
+                  <div style="font-size:9px;color:#9CA3AF;margin-top:1px;">kcal</div>
+                </div>
+                <div style="text-align:center;background:#F9FAFB;border-radius:8px;padding:8px 4px;">
+                  <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;color:#0F3D2E;">22g</div>
+                  <div style="font-size:9px;color:#9CA3AF;margin-top:1px;">protein</div>
+                </div>
+                <div style="text-align:center;background:#F9FAFB;border-radius:8px;padding:8px 4px;">
+                  <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;color:#0F3D2E;">68g</div>
+                  <div style="font-size:9px;color:#9CA3AF;margin-top:1px;">carbs</div>
+                </div>
+                <div style="text-align:center;background:#F9FAFB;border-radius:8px;padding:8px 4px;">
+                  <div style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;color:#0F3D2E;">11g</div>
+                  <div style="font-size:9px;color:#9CA3AF;margin-top:1px;">fat</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polyline points="2,16 6,10 10,13 15,6 19,8" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline><line x1="2" y1="18" x2="19" y2="18" stroke="#0F3D2E" stroke-width="1.4" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Progress Dashboards &amp; Trends</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Every metric visualised across time: weight, body fat, energy, and mood — one scrollable timeline per client. Spot plateaus before they become problems.</p>
+      </div>
+
+      
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L10 11" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"></path><circle cx="10" cy="15.5" r="3.5" stroke="#0F3D2E" stroke-width="1.5"></circle><line x1="7.5" y1="5" x2="12.5" y2="5" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Biomarker Tracking</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Log HbA1c, lipid panels, blood pressure, hormones, and custom labs. Correlate interventions with outcomes — and show clients the proof.</p>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="7.5" cy="6.5" r="3" stroke="#0F3D2E" stroke-width="1.5"></circle><circle cx="14" cy="6.5" r="2.5" stroke="#0F3D2E" stroke-width="1.4"></circle><path d="M1 17c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round"></path><path d="M14 11c2.2 0.5 3.5 2.5 3.5 4.5" stroke="#0F3D2E" stroke-width="1.4" stroke-linecap="round"></path></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Nutritionist &amp; Team Dashboard</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Track every client's progress from a single dashboard. Assign clients to team members, share session notes, and ensure smooth handoffs — nothing falls through the cracks.</p>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="5" y="2" width="10" height="16" rx="2" stroke="#0F3D2E" stroke-width="1.5"></rect><line x1="8" y1="15.5" x2="12" y2="15.5" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round"></line><line x1="7" y1="6" x2="13" y2="6" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="round"></line><line x1="7" y1="9" x2="11" y2="9" stroke="#0F3D2E" stroke-width="1.2" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Branded Client App</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Your name, your logo, your colours. Clients download your app — not a generic tool. Build your brand while you build their health.</p>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="14" rx="2" stroke="#0F3D2E" stroke-width="1.6"></rect><line x1="2" y1="9" x2="18" y2="9" stroke="#0F3D2E" stroke-width="1.4"></line><line x1="6" y1="2" x2="6" y2="6" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"></line><line x1="14" y1="2" x2="14" y2="6" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"></line><polyline points="7,13 9.5,15.5 13.5,11" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Appointment Booking</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Clients self-book progress review sessions directly from the app. No back-and-forth messages — availability, confirmation, and reminders are handled automatically.</p>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 4h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H6.5l-4 3V5a1 1 0 0 1 1-1z" stroke="#0F3D2E" stroke-width="1.6" stroke-linejoin="round"></path><line x1="7" y1="8.5" x2="13" y2="8.5" stroke="#0F3D2E" stroke-width="1.4" stroke-linecap="round"></line><line x1="7" y1="11.5" x2="11" y2="11.5" stroke="#0F3D2E" stroke-width="1.4" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">In-App Client Messaging</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Clients reach their coach directly through in-app messaging — no WhatsApp needed for communication. All conversations are logged, searchable, and linked to each client's health record.</p>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 0 1 6 6v3l2 3H2l2-3V8a6 6 0 0 1 6-6z" stroke="#0F3D2E" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8 16a2 2 0 0 0 4 0" stroke="#0F3D2E" stroke-width="1.4" stroke-linecap="round"></path><circle cx="15.5" cy="4.5" r="2.5" fill="#A8E63D" stroke="white" stroke-width="1"></circle></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Smart Notifications</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Clients receive timely nudges via in-app push notifications and WhatsApp — logging reminders, appointment confirmations, plan updates, and milestone celebrations, wherever they are.</p>
+      </div>
+
+      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.05);border:1px solid rgba(0,0,0,0.05);" style-hover="transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:oklch(0.96 0.06 140);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="14" rx="2" stroke="#0F3D2E" stroke-width="1.5"></rect><line x1="10" y1="1" x2="10" y2="8" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"></line><polyline points="7.5,3.5 10,1 12.5,3.5" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline><line x1="7" y1="11" x2="13" y2="11" stroke="#0F3D2E" stroke-width="1.3" stroke-linecap="round"></line><line x1="7" y1="14" x2="10.5" y2="14" stroke="#0F3D2E" stroke-width="1.3" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:8px;">Health Report Upload &amp; Analysis</h3>
+        <p style="color:#6B7280;font-size:14px;line-height:1.7;">Clients upload blood reports, scans, and health documents directly from the app. Coaches review them, add notes, and fine-tune diet and workout programs based on the latest clinical picture.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO WE HELP ─── -->
+<section style="background:#0F3D2E;padding:100px 24px;">
+  <div style="max-width:1100px;margin:0 auto;" data-reveal="">
+    <div style="text-align:center;margin-bottom:60px;">
+      <div style="display:inline-block;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.24);border-radius:6px;padding:4px 12px;margin-bottom:20px;">
+        <span style="color:#A8E63D;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;">Who we help</span>
+      </div>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(28px,3.5vw,48px);font-weight:800;color:white;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px;">Built for every health goal</h2>
+      <p style="color:rgba(255,255,255,0.55);font-size:17px;line-height:1.72;max-width:560px;margin:0 auto;">Whether your client is managing a chronic condition or working towards a lifestyle goal, Practice Health gives you and your client the tools to track progress and stay on course.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="#A8E63D" stroke-width="1.6"></circle><polyline points="6,10 9,13 14,7.5" stroke="#A8E63D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;">Diabetes &amp; Metabolic Health</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.72;">Track HbA1c, fasting glucose, and dietary compliance over time. Show clients how food and lifestyle choices directly move their numbers.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><polyline points="2,16 6,10 10,13 15,6 19,8" stroke="#A8E63D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></polyline><line x1="2" y1="18" x2="19" y2="18" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;">Weight Management</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.72;">Log weight, body measurements, and meals in one place. Visualise progress week by week so clients stay motivated and on track with their goals.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 0 1 6 6c0 4-6 10-6 10S4 12 4 8a6 6 0 0 1 6-6z" stroke="#A8E63D" stroke-width="1.6"></path><circle cx="10" cy="8" r="2" stroke="#A8E63D" stroke-width="1.4"></circle></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;">PCOS &amp; Hormonal Health</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.72;">Monitor cycle patterns, weight fluctuations, and lab markers together. Correlate interventions with hormonal outcomes and build personalised plans that actually work.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="#A8E63D" stroke-width="1.6"></rect><line x1="7" y1="10" x2="13" y2="10" stroke="#A8E63D" stroke-width="1.5" stroke-linecap="round"></line><line x1="10" y1="7" x2="10" y2="13" stroke="#A8E63D" stroke-width="1.5" stroke-linecap="round"></line></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;">Thyroid &amp; Gut Health</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.72;">Track thyroid markers, energy levels, and digestive symptoms alongside diet. Connect the dots between nutrition changes and how clients feel, every day.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3C6 3 3 6 3 9.5c0 2 1 3.8 2.5 5l4.5 2.5 4.5-2.5C16 13.3 17 11.5 17 9.5 17 6 14 3 10 3z" stroke="#A8E63D" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;">Heart Health &amp; Lipid Management</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.72;">Log lipid panels, blood pressure, and dietary fat intake over time. Give clients a clear, visual story of how their nutrition programme is improving their cardiac risk profile.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.06);border-radius:16px;padding:28px;border:1px solid rgba(255,255,255,0.1);">
+        <div style="width:44px;height:44px;border-radius:12px;background:rgba(168,230,61,0.14);border:1px solid rgba(168,230,61,0.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#A8E63D" stroke-width="1.6"></circle><path d="M3 18c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke="#A8E63D" stroke-width="1.6" stroke-linecap="round"></path></svg>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:10px;">General Wellness &amp; Lifestyle</h3>
+        <p style="color:rgba(255,255,255,0.5);font-size:14px;line-height:1.72;">Not every client has a diagnosis — many just want to eat better, feel better, and build lasting habits. Practice Health keeps them accountable and you in control.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how" style="background:white;padding:100px 24px;">
+  <div style="max-width:960px;margin:0 auto;" data-reveal="">
+    <div style="text-align:center;margin-bottom:64px;">
+      <p style="color:#0F3D2E;font-size:11.5px;text-transform:uppercase;letter-spacing:0.13em;font-weight:600;margin-bottom:12px;">Simple by design</p>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(28px,4vw,50px);font-weight:800;color:#1C1C1C;letter-spacing:-0.03em;line-height:1.1;">Up and running in minutes</h2>
+    </div>
+    <div style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;">
+      <div style="flex:1;min-width:200px;max-width:268px;text-align:center;">
+        <div style="width:64px;height:64px;border-radius:20px;background:#0F3D2E;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:28px;font-weight:900;color:#A8E63D;line-height:1;">1</span>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#1C1C1C;margin-bottom:10px;">Invite your client</h3>
+        <p style="color:#6B7280;font-size:15px;line-height:1.7;">They download your branded app, complete your intake form, and start logging — in under 5 minutes.</p>
+      </div>
+      <div style="flex:1;min-width:200px;max-width:268px;text-align:center;">
+        <div style="width:64px;height:64px;border-radius:20px;background:#0F3D2E;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:28px;font-weight:900;color:#A8E63D;line-height:1;">2</span>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#1C1C1C;margin-bottom:10px;">See the full picture, instantly</h3>
+        <p style="color:#6B7280;font-size:15px;line-height:1.7;">Progress charts, biomarker trends, and body composition data update in real time — no manual compiling, no chasing clients for updates.</p>
+      </div>
+      <div style="flex:1;min-width:200px;max-width:268px;text-align:center;">
+        <div style="width:64px;height:64px;border-radius:20px;background:#0F3D2E;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:28px;font-weight:900;color:#A8E63D;line-height:1;">3</span>
+        </div>
+        <h3 style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#1C1C1C;margin-bottom:10px;">Coach with confidence</h3>
+        <p style="color:#6B7280;font-size:15px;line-height:1.7;">Adjust protocols with the full picture in front of you. Spend more time coaching, less time chasing updates.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VIDEO ─── -->
+
+
+<!-- ─── SOCIAL PROOF ─── -->
+
+
+<!-- ─── PRICING ─── -->
+<section id="pricing" style="background:#FAF8F3;padding:100px 24px;">
+  <div style="max-width:1060px;margin:0 auto;" data-reveal="">
+    <div style="text-align:center;margin-bottom:60px;">
+      <p style="color:#0F3D2E;font-size:11.5px;text-transform:uppercase;letter-spacing:0.13em;font-weight:600;margin-bottom:12px;">Transparent pricing</p>
+      <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(28px,4vw,50px);font-weight:800;color:#1C1C1C;letter-spacing:-0.03em;line-height:1.1;margin-bottom:12px;">Start free. Grow as you go.</h2>
+      <p style="color:#6B7280;font-size:16px;">14-day free trial on all plans. No credit card required.</p>
+    </div>
+    <div style="display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;justify-content:center;">
+
+      <!-- Solo -->
+      <div style="flex:1;min-width:256px;max-width:318px;background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1.5px solid #E5E7EB;">
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;margin-bottom:6px;">Solo</div>
+        <p style="color:#6B7280;font-size:13px;line-height:1.55;margin-bottom:24px;">For independent practitioners just getting started.</p>
+        <div style="margin-bottom:28px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:40px;font-weight:800;color:#1C1C1C;letter-spacing:-0.04em;">₹2,999</span><span style="color:#9CA3AF;font-size:14px;">/mo</span>
+          <div style="color:#9CA3AF;font-size:12px;margin-top:2px;">Cancel anytime</div>
+        </div>
+        <a href="#" style="display:block;text-align:center;background:#F0EDE6;color:#0F3D2E;padding:12px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:28px;" style-hover="background:#E5E2DB;">Start free trial</a>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">1 practitioner</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Up to 50 active clients</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">All core features</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Practice Health branding</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Email support</span></div>
+        </div>
+      </div>
+
+      <!-- Clinic (popular) -->
+      <div style="flex:1;min-width:256px;max-width:318px;background:#0F3D2E;border-radius:20px;padding:32px;box-shadow:0 20px 56px rgba(15,61,46,0.38);border:1.5px solid #1A5C44;position:relative;transform:scale(1.04);">
+        <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#A8E63D;color:#0F3D2E;padding:4px 16px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:11px;font-weight:800;white-space:nowrap;letter-spacing:0.03em;">MOST POPULAR</div>
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:white;margin-bottom:6px;">Clinic</div>
+        <p style="color:rgba(255,255,255,0.5);font-size:13px;line-height:1.55;margin-bottom:24px;">For small clinics and multi-practitioner practices.</p>
+        <div style="margin-bottom:28px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:40px;font-weight:800;color:white;letter-spacing:-0.04em;">₹6,999</span><span style="color:rgba(255,255,255,0.45);font-size:14px;">/mo</span>
+          <div style="color:rgba(255,255,255,0.3);font-size:12px;margin-top:2px;">Cancel anytime</div>
+        </div>
+        <a href="#" style="display:block;text-align:center;background:#A8E63D;color:#0F3D2E;padding:12px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:28px;" style-hover="background:#BAF050;">Start free trial</a>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(168,230,61,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:rgba(255,255,255,0.82);font-size:13px;">Up to 3 practitioners</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(168,230,61,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:rgba(255,255,255,0.82);font-size:13px;">Up to 100 active clients</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(168,230,61,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:rgba(255,255,255,0.82);font-size:13px;">Team dashboard &amp; assignments</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(168,230,61,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:rgba(255,255,255,0.82);font-size:13px;">Branded client app</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(168,230,61,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:rgba(255,255,255,0.82);font-size:13px;">Advanced analytics &amp; reports</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:rgba(168,230,61,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#A8E63D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:rgba(255,255,255,0.82);font-size:13px;">Priority chat support</span></div>
+        </div>
+      </div>
+
+      <!-- Pro -->
+      <div style="flex:1;min-width:256px;max-width:318px;background:white;border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border:1.5px solid #E5E7EB;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;color:#1C1C1C;">Pro</span>
+          <span style="background:#F3F4F6;color:#6B7280;font-size:10px;font-weight:600;padding:2px 8px;border-radius:100px;">White-label</span>
+        </div>
+        <p style="color:#6B7280;font-size:13px;line-height:1.55;margin-bottom:24px;">For large clinics, networks, and white-label deployments.</p>
+        <div style="margin-bottom:28px;">
+          <span style="font-family:'Outfit',sans-serif;font-size:40px;font-weight:800;color:#1C1C1C;letter-spacing:-0.04em;">₹14,999</span><span style="color:#9CA3AF;font-size:14px;">/mo</span>
+          <div style="color:#9CA3AF;font-size:12px;margin-top:2px;">Cancel anytime</div>
+        </div>
+        <a href="#" style="display:block;text-align:center;background:#F0EDE6;color:#0F3D2E;padding:12px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;text-decoration:none;margin-bottom:28px;" style-hover="background:#E5E2DB;">Book a demo</a>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Unlimited practitioners</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Unlimited clients</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Full white-label app</span></div>
+          
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">Dedicated onboarding</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:16px;height:16px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="8" height="8" viewBox="0 0 8 8"><polyline points="1.5,4.5 3.5,6.5 6.5,2" fill="none" stroke="#16A34A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></div><span style="color:#4B5563;font-size:13px;">SLA &amp; priority support</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<section style="background:radial-gradient(ellipse 80% 80% at 50% 50%, #1B5E46 0%, #0F3D2E 70%);padding:100px 24px;">
+  <div style="max-width:620px;margin:0 auto;text-align:center;" data-reveal="">
+    <h2 style="font-family:'Outfit',sans-serif;font-size:clamp(30px,4vw,56px);font-weight:900;color:white;letter-spacing:-0.035em;line-height:1.05;margin-bottom:16px;">Spend more time coaching.<br><span style="color:#A8E63D;">Less time on admin.</span></h2>
+    <p style="color:rgba(255,255,255,0.58);font-size:17px;line-height:1.7;margin-bottom:40px;">Join 500+ nutrition professionals who've found a better way to practise. 14-day free trial — no credit card required.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="#" style="background:#A8E63D;color:#0F3D2E;padding:16px 32px;border-radius:12px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;text-decoration:none;white-space:nowrap;" style-hover="background:#BAF050;transform:translateY(-1px);">Start free trial — it's free</a>
+      <a href="#" style="color:rgba(255,255,255,0.75);padding:16px 24px;border-radius:12px;font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;text-decoration:none;white-space:nowrap;border:1.5px solid rgba(255,255,255,0.2);" style-hover="color:white;border-color:rgba(255,255,255,0.45);">Book a demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer style="background:#071810;padding:56px 24px 32px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:flex;gap:48px;flex-wrap:wrap;margin-bottom:48px;">
+      <div style="flex:2;min-width:200px;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <svg width="22" height="22" viewBox="0 0 22 22"><rect x="1" y="1" width="9" height="9" rx="2" fill="#A8E63D"></rect><rect x="12" y="12" width="9" height="9" rx="2" fill="#A8E63D" opacity="0.45"></rect><rect x="12" y="1" width="9" height="9" rx="2" fill="#A8E63D" opacity="0.18"></rect></svg>
+          <span style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:white;">Practice Health</span>
+        </div>
+        <p style="color:rgba(255,255,255,0.38);font-size:13px;line-height:1.65;max-width:220px;">Clinical-grade progress tracking for nutrition professionals.</p>
+        <div style="display:flex;gap:8px;margin-top:18px;">
+          <a href="#" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;" style-hover="background:rgba(255,255,255,0.13);"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M12.5 1L7.3 6.5M12.5 1H8.5M12.5 1V5" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round"></path><path d="M5.5 2.5H2a1 1 0 0 0-1 1v7.5a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V7.5" stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round"></path></svg></a>
+          <a href="#" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;" style-hover="background:rgba(255,255,255,0.13);"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1" y="1" width="11" height="11" rx="2.5" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"></rect><circle cx="6.5" cy="6.5" r="2.5" stroke="rgba(255,255,255,0.45)" stroke-width="1.2"></circle><circle cx="10" cy="3" r="0.7" fill="rgba(255,255,255,0.45)"></circle></svg></a>
+          <a href="#" style="width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.07);display:flex;align-items:center;justify-content:center;" style-hover="background:rgba(255,255,255,0.13);"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 1.5L5.2 7.2L1 12H2.3L5.8 8L8.8 12H12.5L8.1 5.9L12 1.5H10.7L7.5 5.2L4.7 1.5H1Z" fill="rgba(255,255,255,0.45)"></path></svg></a>
+        </div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;">Product</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="#features" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Features</a>
+          <a href="#how" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">How it works</a>
+          <a href="#pricing" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Pricing</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Changelog</a>
+        </div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;">Company</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">About</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Blog</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Contact</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Careers</a>
+        </div>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;">Legal</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Privacy Policy</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Terms of Service</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">Security</a>
+          <a href="#" style="color:rgba(255,255,255,0.55);text-decoration:none;font-size:13px;" style-hover="color:white;">DPDP Act</a>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+      <span style="color:rgba(255,255,255,0.28);font-size:12px;">© 2025 Practice Health. All rights reserved. Made in India.</span>
+      <span style="color:rgba(255,255,255,0.18);font-size:12px;">Hosted in Mumbai · ISO 27001 · DPDP compliant</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 900}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
+          }
+        });
+      },
+      { threshold: 0.07, rootMargin: '0px 0px -32px 0px' }
+    );
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+      io.observe(el);
+    });
+  }
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
