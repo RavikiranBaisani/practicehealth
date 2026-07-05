@@ -282,21 +282,9 @@
         <!-- Visual side -->
         <div style="flex:1;min-width:280px;background:oklch(0.97 0.03 140);padding:32px;display:flex;align-items:center;justify-content:center;">
           <div style="width:100%;max-width:360px;background:white;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.1);">
-            <!-- Food photo placeholder -->
+            <!-- Food photo -->
             <div style="position:relative;height:160px;overflow:hidden;">
-              <svg width="100%" height="160" style="display:block;">
-                <defs>
-                  <pattern id="fp" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
-                    <rect width="20" height="20" fill="#E8F5D0"></rect>
-                    <rect width="10" height="20" fill="#D4EDBB"></rect>
-                  </pattern>
-                </defs>
-                <rect width="100%" height="160" fill="url(#fp)"></rect>
-                <!-- Camera icon -->
-                <rect x="50%" y="50%" width="44" height="36" rx="6" fill="rgba(15,61,46,0.12)" transform="translate(-22,-22)"></rect>
-                <circle cx="50%" cy="50%" r="11" fill="rgba(15,61,46,0.18)" transform="translate(0,2)"></circle>
-                <text x="50%" y="148" text-anchor="middle" font-family="monospace" font-size="10" fill="rgba(15,61,46,0.38)">meal photo · tap to analyse</text>
-              </svg>
+              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&amp;q=80" alt="Chicken salad meal photo" style="display:block;width:100%;height:160px;object-fit:cover;">
               <!-- Scanning overlay -->
               <div style="position:absolute;top:10px;right:10px;background:rgba(15,61,46,0.85);border-radius:8px;padding:5px 10px;display:flex;align-items:center;gap:5px;">
                 <div style="width:5px;height:5px;border-radius:50%;background:#A8E63D;animation:pulse 1.8s ease infinite;"></div>
@@ -306,7 +294,7 @@
             <!-- Macro results -->
             <div style="padding:16px;">
               <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-                <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:#1C1C1C;">Dal Tadka + Rice</div>
+                <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:#1C1C1C;">Chicken Salad</div>
                 <div style="background:#DCFCE7;color:#16A34A;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;">Auto-detected ✓</div>
               </div>
               <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
